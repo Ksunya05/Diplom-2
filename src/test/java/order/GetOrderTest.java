@@ -8,14 +8,14 @@ import org.junit.Test;
 import params.CreateOrder;
 import params.CreateUser;
 import params.DeleteUser;
-import steps.BasePage;
+import base.BaseTest;
 import steps.OrderApi;
 import steps.UserApi;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
 
-public class GetOrderTest extends BasePage {
+public class GetOrderTest extends BaseTest {
     private String email;
     private String name;
     private String accessToken;

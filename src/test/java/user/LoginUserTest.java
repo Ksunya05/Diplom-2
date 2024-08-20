@@ -9,13 +9,13 @@ import org.junit.Test;
 import params.CreateUser;
 import params.DeleteUser;
 import params.LoginUser;
-import steps.BasePage;
+import base.BaseTest;
 import steps.UserApi;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
 
-public class LoginUserTest extends BasePage {
+public class LoginUserTest extends BaseTest {
     private String email;
     private String name;
     private String password;
@@ -53,11 +53,11 @@ public class LoginUserTest extends BasePage {
         accessToken = response.jsonPath().getString("accessToken");
     }
 
+
     @After
-    public void deleteUser() throws Exception {
-        try {
+    public void deleteUser() {
+        if (accessToken != null) {
             UserApi.deleteUser(new DeleteUser(email, name), accessToken).then().statusCode(SC_ACCEPTED);
-        } catch (Exception e) {
         }
     }
 }

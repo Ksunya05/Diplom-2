@@ -8,9 +8,9 @@ import params.CreateOrder;
 import static io.restassured.RestAssured.given;
 
 public class OrderApi {
-    private static final String hand_create_order = "/api/orders";
-    private static final String hand_get_orders = "/api/orders";
-    private static final String hand_get_ingredients = "/api/ingredients";
+    private static final String CREATE_ORDER = "/api/orders";
+    private static final String GET_ORDERS = "/api/orders";
+    private static final String GET_INGREDIENTS = "/api/ingredients";
 
     @Step("Создание заказа")
     public static Response createOrder(CreateOrder createOrder, String accessToken) {
@@ -24,7 +24,7 @@ public class OrderApi {
                 requestSpecification
                         .and()
                         .body(createOrder)
-                        .post(hand_create_order);
+                        .post(CREATE_ORDER);
         return response;
 
     }
@@ -40,7 +40,7 @@ public class OrderApi {
                 given()
                         .header("Content-type", "application/json")
                         .when()
-                        .get(hand_get_ingredients);
+                        .get(GET_INGREDIENTS);
         return response;
     }
 
@@ -56,7 +56,7 @@ public class OrderApi {
                 requestSpecification
                         .and()
                         .when()
-                        .get(hand_get_orders);
+                        .get(GET_ORDERS);
         return response;
     }
 

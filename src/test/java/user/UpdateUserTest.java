@@ -10,14 +10,14 @@ import params.CreateUser;
 import params.DeleteUser;
 import params.LoginUser;
 import params.UpdateUser;
-import steps.BasePage;
+import base.BaseTest;
 import steps.UserApi;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.equalTo;
 
-public class UpdateUserTest extends BasePage {
+public class UpdateUserTest extends BaseTest {
     private String email;
     private String name;
     private String password;

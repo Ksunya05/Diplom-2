@@ -8,14 +8,14 @@ import org.junit.Before;
 import org.junit.Test;
 import params.CreateUser;
 import params.DeleteUser;
-import steps.BasePage;
+import base.BaseTest;
 import steps.UserApi;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.equalTo;
 
-public class CreateUserTest extends BasePage {
+public class CreateUserTest extends BaseTest {
     private String email;
     private String name;
     private String accessToken;
@@ -61,10 +61,9 @@ public class CreateUserTest extends BasePage {
 
 
     @After
-    public void deleteUser() throws Exception {
-        try {
+    public void deleteUser()  {
+        if (accessToken != null) {
             UserApi.deleteUser(new DeleteUser(email, name), accessToken).then().statusCode(SC_ACCEPTED);
-        } catch (Exception e) {
         }
     }
 }

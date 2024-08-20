@@ -11,10 +11,10 @@ import params.UpdateUser;
 import static io.restassured.RestAssured.given;
 
 public class UserApi {
-    private static final String hand_create_user = "/api/auth/register";
-    private static final String hand_login_user = "/api/auth/login";
-    private static final String hand_delete_user = "/api/auth/user";
-    private static final String hand_update = "/api/auth/user";
+    private static final String CREATE_USER = "/api/auth/register";
+    private static final String LOGIN_USER = "/api/auth/login";
+    private static final String DELETE_USER = "/api/auth/user";
+    private static final String UPDATE_USER = "/api/auth/user";
 
     @Step("Создание пользователя")
     public static Response createUser(CreateUser createUser) {
@@ -23,7 +23,7 @@ public class UserApi {
                 .and()
                 .body(createUser)
                 .when()
-                .post(hand_create_user);
+                .post(CREATE_USER);
     }
 
     @Step("Авторизация пользователя")
@@ -33,7 +33,7 @@ public class UserApi {
                 .and()
                 .body(loginUser)
                 .when()
-                .post(hand_login_user);
+                .post(LOGIN_USER);
     }
 
     @Step("Удаление пользователя")
@@ -44,7 +44,7 @@ public class UserApi {
                 .and()
                 .body(deleteUser)
                 .when()
-                .delete(hand_delete_user);
+                .delete(DELETE_USER);
     }
 
     @Step("Изменение данных пользователя с токеном")
@@ -59,7 +59,7 @@ public class UserApi {
                 requestSpecification
                         .and()
                         .body(updateUser)
-                        .patch(hand_update);
+                        .patch(UPDATE_USER);
         return response;
     }
 
